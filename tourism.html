@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="./style.css">
+
+	<link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+	<script src="./highlight.min.js"></script>
+
+	<script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+	<link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+                <script src="./node_modules/d3/dist/d3.min.js"></script>
+                <script src="scripts/tourism/bar-arr.js"></script>
+                <script src="scripts/tourism/bar-dep.js"></script>
+                <script src="scripts/tourism/pie-arr.js"></script>
+                <script src="scripts/tourism/pie-dep.js"></script>
+                <script src="scripts/tourism/choropleth.js"></script>
+    <style>
+        .grid-item {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #sidebar {
+            background-color: #333;
+            color: #fff;
+            min-height: 95vh;
+            width: auto;
+            padding: 20px;
+            border-radius: 15px;
+            /* border-bottom-right-radius: 15px; */
+            margin: 1%;
+        }
+
+        #content {
+            padding: 20px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            pointer-events: none;
+        }
+
+        .arc text {
+            font: 10px sans-serif;
+            text-anchor: middle;
+        }
+    
+        .arc path {
+        stroke: #fff;
+        }
+            
+        .axis path,
+        .axis line {
+        fill: none;
+        stroke: black;
+        shape-rendering: crispEdges;
+        }
+    
+        .axis text {
+        font-family: sans-serif;
+        font-size: 0.85em;
+        }
+    
+        text {
+        font-family: sans-serif;
+        font-size: 0.65em;
+        }
+    
+        svg {
+        display: block;
+        }
+    
+        .bar {
+        fill: #1caad977;
+        }
+    
+        text.label {
+        text-anchor: middle;
+        }
+    
+        text.name {
+        font-weight: bold;
+        text-anchor: middle;
+        }
+    
+        .button {
+        border-radius: 3px;
+        background-color: #eee;
+        padding: 5px;
+        margin: 5px;
+        cursor: default;
+        font-family: sans-serif;
+        font-size: 0.85em;
+        font-weight: bold;
+        cursor: default;
+        user-select: none;
+        }
+
+        #scrollToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+            .chart-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+
+        .chart-item {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-2" id="sidebar">
+                <img src = "plane-solid.svg"  style="width: 50px; display: block; margin: 0 auto; filter: grayscale(100%) invert(100%)"/>
+                <ul>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="home.html">Home</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="inflation.html">Inflation</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="tourism.html">Tourism</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="model.html">Model</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9" id="content">
+
+                <div class="container">
+
+                        <!-- Add a dropdown for selecting the year -->
+                        <div class="text-center mb-2">
+                            <h1>Tourism by number of Arrivals and Departures (TAD)</h1>
+                            Select Year:
+                            <select id="yearSelector"></select>
+                    
+                            <!-- Add a button to trigger the update based on the selected year -->
+                            <button class="button" onclick="updateCharts()">Update Charts</button>
+                        </div>
+                </div>
+
+                <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+                    <h3>First, look at ratio of Departures Over Arrivals:</h3>
+                    <div id="choropleth-ratio" style="max-width: 100%; width: 100%;"></div>
+                    <p>
+                    Countries with white color have more arrivals than depatures, meaning these countries are popular touring spots.<br>
+                    Countries with red color have more depatures than arrivals.
+                    </p>
+                    <br>
+
+                    <div>
+                        <h3>Second, examine the Number of Arrivals:</h3>
+                    </div>
+                    <div class = "container">
+                        <div class="text-center mb-2">
+                            Reset to default here 
+                        <span class="button filter-sort" id="arr-reset">RESET</span>
+                        </div>
+                    
+                        <div class="container text-center mb-2">
+                        Show Continent 
+                        <span class="button filter" id="arr-all">ALL</span>
+                        <span class="button filter" id="arr-africa">Africa</span>
+                        <span class="button filter" id="arr-america">America</span>
+                        <span class="button filter" id="arr-asia">Asia</span>
+                        <span class="button filter" id="arr-oceania">Oceania</span>
+                        <span class="button filter" id="arr-europe">Europe</span>
+                        </div>
+                        
+                        <div class="container text-center mb-2">
+                        Sort by 
+                        <span class="button sort" id="arrival">Arrivals</span>
+                        <span class="button sort" id="arr-alphabet">Alphabatical</span>
+                        </div>
+                    
+                        <div class="container">
+                            <div id="bar-arrv" style="max-width: 100%; width: 100%;"></div>
+                        </div>
+
+                    </div>
+                    <div id="pie-arrv" style="max-width: 100%; width: 100%;"></div>
+
+                    <br>
+                    <h3>Lastly, examine the Number of Departures:</h3>
+                    <div class="container">
+                        <div class="text-center mb-2">
+                            Reset to default here 
+                            <span class="button filter-sort" id="dep-reset">RESET</span>
+                          </div>
+                        
+                          <div class="text-center mb-2">
+                            Show Continent 
+                            <span class="button filter" id="dep-all">ALL</span>
+                            <span class="button filter" id="dep-africa">Africa</span>
+                            <span class="button filter" id="dep-america">America</span>
+                            <span class="button filter" id="dep-asia">Asia</span>
+                            <span class="button filter" id="dep-oceania">Oceania</span>
+                            <span class="button filter" id="dep-europe">Europe</span>
+                          </div>
+                          
+                          <div class="text-center mb-2">
+                            Sort by 
+                            <span class="button sort" id="departure">Departures</span>
+                            <span class="button sort" id="dep-alphabet">Alphabatical</span>
+                          </div>
+
+                          <div id="bar-dept" style="max-width: 95%; width: 95%;"></div>
+                        
+                    </div>
+                    <div id="pie-dept" style="max-width: 95%; width: 95%;"></div>
+
+                    <br>
+                    <h3>Key Takeaways:</h3>
+                    <ol>
+                        <li>Europe and America dominate in number of arriving/departing travelers through 1995-2020.</li>
+                        <li>Countries in Africa are mainly identified by region in the World Bank data, so country-level data is missing.</li>
+                    </ol>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to dynamically populate the dropdown with years
+        function populateYearDropdown() {
+            var dropdown = document.getElementById("yearSelector");
+
+            // Populate the dropdown with years from 1995 to 2021
+            for (var year = 1995; year < 2021; year++) {
+                var option = document.createElement("option");
+                option.value = year;
+                option.text = year;
+                dropdown.add(option);
+            }
+        }
+
+        // Function to update charts based on the selected year
+        function updateCharts() {
+            // Get the selected year from the dropdown
+            var selectedYear = document.getElementById("yearSelector").value;
+            // Ensure that the year is an integer
+            selectedYear = parseInt(selectedYear, 10);
+
+            // Clear existing charts
+            clearCharts();
+
+            // Call drawing functions with the selected year
+            drawChoropleth(selectedYear);
+            drawPieArrv(selectedYear);
+            drawPieDept(selectedYear);
+            drawBarArrv(selectedYear);
+            drawBarDept(selectedYear);
+        }
+
+        // Function to clear existing charts
+        function clearCharts() {
+            document.getElementById("choropleth-ratio").innerHTML = "";
+            document.getElementById("pie-arrv").innerHTML = "";
+            document.getElementById("pie-dept").innerHTML = "";
+            document.getElementById("bar-arrv").innerHTML = "";
+            document.getElementById("bar-dept").innerHTML = "";
+        }
+
+        // Call the function to populate the dropdown during page load
+        populateYearDropdown();
+
+        // Initial drawing with a default year
+        drawChoropleth(1995);
+        drawPieArrv(1995);
+        drawPieDept(1995);
+        drawBarArrv(1995);
+        drawBarDept(1995);
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

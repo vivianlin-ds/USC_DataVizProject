@@ -1,0 +1,12 @@
+runtime: python39  # You can use any runtime, as this is just for serving static files.
+
+handlers:
+- url: /
+  static_files: index.html
+  upload: index\.html
+  secure: always  # This enforces HTTPS. You can adjust this based on your requirements.
+
+- url: /(.+\.html)
+  static_files: \1
+  upload: (.+\.html)
+  secure: always

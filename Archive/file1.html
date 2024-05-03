@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="node_modules/d3/dist/d3.min.js"></script>
+    <script src="node_modules/topojson-client/dist/topojson-client.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Inflation dashboard</title>
+    <style>
+        body {
+            padding-top: 56px;
+            margin: 0;
+            padding-bottom: 20px;
+        }
+        body .line-chart {
+            display: block;
+        }
+        .sidebar {
+            position: fixed;
+            top: 56px;
+            left: 0;
+            bottom: 0;
+            width: 200px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        svg {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">DSCI 554 Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="file1.html">Page 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="file2.html">Page 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="file3.html">Page 3</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <h5>Sidebar</h5>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="#">Item 1</a></li>
+            <li class="list-group-item"><a href="#">Item 2</a></li>
+            <li class="list-group-item"><a href="#">Item 3</a></li>
+        </ul>
+    </div>
+    <div class="container-fluid">
+        <div class="container">
+
+        </div>
+    </div>
+
+    <div class="chloropleth">
+        <script src="inflation_page/inflation_chloropleth.js"></script>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

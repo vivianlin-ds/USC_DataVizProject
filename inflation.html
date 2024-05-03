@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="node_modules/d3/dist/d3.min.js"></script>
+	<link rel="stylesheet" href="./style.css">
+	<link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="./github-dark-dimmed.min.css">
+	<script src="./highlight.min.js"></script>
+	<script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+	<link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-dNsERbU9Jr0WD7j4FYp+3sVym2TmBT5j39N7k4NBUqA9/RiW7xH2h/QD2LJPIqFg" crossorigin="anonymous">
+
+</head>
+<style>
+            #sidebar {
+            top:0;
+            background-color: #333;
+            color: #fff;
+            min-height: 95vh;
+            width: auto;
+            padding: 20px;
+            border-radius: 15px;
+            /* border-bottom-right-radius: 15px; */
+            margin: 1%;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+</style>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-2" id="sidebar">
+                <img src = "money-bill-1-wave-solid.svg"  style="width: 50px; display: block; margin: 0 auto; filter: grayscale(100%) invert(100%)"/>
+                <ul>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="home.html">Home</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="inflation.html">Inflation</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="tourism.html">Tourism</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="model.html">Model</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9" id="content">
+                <div class="container"  style="max-width: 100%; width: 100%; display: flex; flex-direction: column; align-items: center;">
+                    <div class="text-center mb-2">
+                    <h1>Global Headline Consumer Inflation Rates from 1995 - 2020</h1>
+                    </div>
+                    <div class="card-deck">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Average Inflation in 1995</h5>
+                                <p class="card-text">56.24%</p>
+                            </div>
+                        </div>
+                
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Average Inflation in 2020</h5>
+                                <p class="card-text">104.67%</p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Inflation Percent Increase 1995 - 2020</h5>
+                                <p class="card-text">86.09%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="inflation" style="max-width: 100%; width: 100%;"> 
+                        <h5>Click a country to view detailed inflation data</h5>
+                            <script src="scripts/inflation/inflation_chloropleth.js"></script>
+                        </div>
+                    <h4>Key Takeaways:</h4>
+                    <ol>
+                        <li>In general, energy price index and food price index share similar trends within the same country.</li>
+                        <li>Because produce price index is indicative of a potential fluctuation in core consumer price index, you can identify potential inflation trends using PPI.</li>
+                        <li>Countries with very high GDPs (USA, China, etc.) have more stable inflation rates over time that do not fluctuate much.</li>
+                    </ol>
+                </div>
+              </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

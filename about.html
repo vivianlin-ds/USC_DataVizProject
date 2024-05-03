@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="node_modules/d3/dist/d3.min.js"></script>
+	<link rel="stylesheet" href="./style.css">
+	<link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="./github-dark-dimmed.min.css">
+	<script src="./highlight.min.js"></script>
+	<script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+	<link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+</head>
+<style>
+            #sidebar {
+            background-color: #333;
+            color: #fff;
+            height: 95vh;
+            width: auto;
+            padding: 20px;
+            border-radius: 15px;
+            /* border-bottom-right-radius: 15px; */
+            margin: 1%;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+</style>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-2" id="sidebar">
+                <img src = "address-card-solid.svg"  style="width: 50px; display: block; margin: 0 auto; filter: grayscale(100%) invert(100%)"/>
+                <ul>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="home.html">Home</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="inflation.html">Inflation</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="tourism.html">Tourism</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="model.html">Model</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-8" id="content">
+                <div class="container" style="display: flex; flex-direction: column; align-items: center; padding:10px">
+                    <h1>
+                        About Page
+                    </h1>
+                    <p>
+                        We choose to look at modeling inflation and tourism because our group is all Applied Data Science majors, and we have learned how to use models to develop insights into data. Because visualizations are a powerful tool to communicate findings from our models, we felt it would be interesting to see how our models perform, and this has been useful
+                         practice to work with large and impactful datasets. We also all enjoy traveling!
+                    </p>
+                </div>
+                    <h3 style="align-items: left;">
+                        Data used
+                    </h3>
+                        <p>
+                        1. The World Bank - A Global Dataset of Inflation: <a href="https://www.worldbank.org/en/research/brief/inflation-database">Inflation</a><br>
+                        2. The World Bank - International Tourism: <a href="https://data.worldbank.org/indicator/ST.INT.DPRT">Tourism</a><br>
+                        3. World Map GeoJSON: <a href= "https://geojson-maps.ash.ms/">GeoJSON</a>
+                        </p>
+                    <h3>Team Members</h3>
+                        Kshitij Ahuja<br>
+                        Vivian Lin<br>
+                        Andrew Bruneel<br>
+                        Madhesh Neyvasagam<br>
+
+
+            </div>
+            <!-- <div class="col-md-10" id="content" style="position: fixed;width:auto">
+                <div class="container"  style="float: left; width: auto; position: fixed; right:15%">
+                    <div id="inflation" padding="10px"> 
+                        <h3>Global Headline Consumer Inflation Rates from 1995 - 2020</h3>
+                        <h5>Click a country to view detailed inflation data</h5>
+                            <script src="inflation_page/inflation_chloropleth.js"></script>
+                        </div>
+                    </div>
+              </div> -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

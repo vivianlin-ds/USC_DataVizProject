@@ -1,0 +1,13 @@
+body {
+  margin: 20px 25px 25px 25px;
+}
+
+pre {
+  border-radius: 5px;
+}
+
+.answer {
+  border: 2px solid lightgrey;
+  margin: 20px 0px;
+  padding: 10px;
+}

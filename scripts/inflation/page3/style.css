@@ -1,0 +1,90 @@
+/* styles.css */
+
+body {
+  padding-top: 56px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+.bar:hover {
+fill: steelblue;
+}
+
+.axis-label {
+font-size: 14px;
+}
+
+#chart {
+  width: 1200px;
+  margin: 20px ; /* Center-align the chart */
+}
+
+.bar:hover {
+  fill: steelblue;
+}
+
+.axis-label {
+  font-size: 14px;
+}
+
+button {
+  border-radius: 3px;
+  background-color: #eee;
+  padding: 5px;
+  margin: 5px;
+  cursor: default;
+  font-family: Arial;
+  font-size: 0.85em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: rgb(73, 94, 87);
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button-container button {
+  margin: 0 5px;
+}
+#table-container {
+  text-align: center;
+  margin-top: 20px;
+}
+/* Additional styles for the table */
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #b2e061;
+}
+
+tr:hover {
+  background-color: #ffcc00;
+}
+
+.after-2022 {
+  background-color: #32c615;
+  /* Light Blue color for rows after 2022 */
+}

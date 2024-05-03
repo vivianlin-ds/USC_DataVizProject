@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="node_modules/d3/dist/d3.min.js"></script>
+	<link rel="stylesheet" href="./style.css">
+	<link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="./github-dark-dimmed.min.css">
+	<script src="./highlight.min.js"></script>
+	<script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+	<link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+</head>
+<style>
+            #sidebar {
+            background-color: #333;
+            color: #fff;
+            min-height: 95vh;
+            width: auto;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 1%;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+</style>
+<body>
+
+    <div class="container-fluid" style="display: flex; flex: 1;">
+        <div class="row">
+
+            <div class="col-md-2" id="sidebar">
+                <img src = "house-solid.svg"  style="width: 50px; display: block; margin: 0 auto; filter: grayscale(100%) invert(100%)"/>
+                <ul>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="home.html">Home</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="inflation.html">Inflation</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="tourism.html">Tourism</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="model.html">Model</a></li>
+                    <li style="font-size: 18px;"><a style= "color: white; text-decoration: none;" href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-8" id="content">
+                <div class="container" style="display: flex; flex-direction: column; align-items: center; padding:10px">
+                    <h1>
+                        Inflation trends and their impact on tourism traffic - DataDynamos
+                    </h1>
+
+                    <div class="card-deck">
+                        <!-- Card 1 -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Inflation Percentage Increase 1995 - 2020</h5>
+                                <p class="card-text">86.09%</p>
+                            </div>
+                        </div>
+                
+                        <!-- Card 2 -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Percentage Departures from Europe 2020</h5>
+                                <p class="card-text">49.87%</p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Increase in inflation since 2021</h5>
+                                <p class="card-text">66%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        For our project, we are working on creating an interactive dashboard for users to view and analyze inflation and tourism datasets for various countries.
+                        Our primary objective with this dashboard was to model the potential relationship between inflation and the tourist arrivals in a country. Consequently,
+                        we were successfully able to predict the inflation rate, tourist arrivals, and tourist departures for the next four years. Additionally, we created pages 
+                        in our dashboard to break down inflation and tourism data specifically, in order for users to visualize the large amount of data that we ingested for this
+                         project. Our chosen datasets were a great opportunity to explore using projections for world maps since our inflation rates are all by country. We wanted 
+                         to highlight the use of interactive and dynamic code that we have learned about in class, because it is commonly used in the dashboards we looked at during our research.
+
+                    </p>
+                </div>
+                    <h3 style="align-items: left;">
+                        Page 1 - Inflation
+                    </h3>
+                        <p>
+                            <ol>
+                            <li>Choropleth Map on Headline Consumer Inflation Rates
+                            Plots each country's headline consumer inflation rates (HCPI) on a choropleth map.
+                             Hovering over each country will show the specific percentages of the country and clicking on the
+                              country will show detailed information on inflation in up to four time series line charts.</li>
+                            <li>Time Series Line Chart on other Inflation Indicators (up to four for each country) Shows up to 4 inflation
+                               indicators (Official Core consumer price index, Food price index, Energy price index, and/or Producer
+                               price index) for the specific country clicked by the user. Each chart is accompanied by a brief explanation of the index. The charts 
+                               will update automatically based on the different countries the user clicked on.</li>
+                            </ol>
+                        </p>
+                        <h3 style="align-items: left;">
+                            Page 2 - Tourism
+                        </h3>
+                        All charts respond to the chosen year in the dropdown.
+                        <ol>
+                        <li>Choropleth Map on Departure over Arrival Ratios
+                        Display the ratio of number of departures over number of arrivals on a choropleth map. 
+                        This shows which countries have the unbalanced number of arriving/departing travelers.</li>
+                        
+                        <li>Pie Charts on Number of Arrivals/Departures in Each Continent
+                        Group the countries by continent and display the percentages of arrivals/departures 
+                        by each continent. This shows which continent experiences the most arriving/departing travelers.</li>
+                        
+                        <li>Bar Charts on Top 20 Countries with Highest Arrivals/Departures
+                        Visualize the top 20 countries with the highest arrivals/departures and allow users to interact with 
+                        the chart by filtering and sorting the 20 countries. Users can filter countries based on continent and 
+                        if the continent does not have a country in the chart, the button is automatically disabled and darkened. 
+                        Users can also sort the bars in descending or alphabetical order.</li>
+                        </ol>
+                        <h3 style="align-items: left;">
+                            Page 3 - Inflation and Tourism Forecasting and Correlation
+                        </h3>
+                        All charts respond to the chosen year in the dropdown.
+                        <ol>
+                        <li>Bar Chart on Forecasting Inflation Index, Number of Arrivals/Departures, 
+                            and Expenditures in USD. SARIMAX based forecasting for the next 4 years</li>
+                        
+                        <li>Table showing the values of the bar chart with predicted values highlighted
+                            The forecasted values, averaged for each year
+                        </li>
+                        
+                        <li>
+                            Heatmap showing correlation matrix between inflation index and indicators for tourism
+                            Analysis of the correlation between the Inflation and other Tourism indicators.
+                            </li
+                        </ol>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
